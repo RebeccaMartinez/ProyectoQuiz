@@ -15,15 +15,13 @@ exports.Quiz = Quiz; //exportar definición de la tabla Quiz (models/quiz.js)
 
 //sequelize.sync() crea e inicia tabla de preguntas en la base de datos
 sequelize.sync().success(function() {
-	Quiz.count().success(funtion (count) {
-		if(count == 0) {
+	Quiz.count().success(function (count) {
+		if(count === 0) {
 			Quiz.create({pregunta: 'Capital de Italia',
 						respuesta: 'Roma'
 			})
-			.success(function(){console.log('Base de datos inicializada')});
-		};
+			.success(function(){console.log('Base de datos inicializada');});
+		}
 	});
 
 });
-
-
