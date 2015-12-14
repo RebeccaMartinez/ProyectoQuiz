@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 16px, Arial, serif;
+}
+
+#page-wrap {
+  margin: 2% auto;
+  color: white;
+}
+
+#page-wrap > .main {
+  border: 1px, solid, #999
+  padding: 1%;
+  margin-bottom: 1px;
+  color: black;
+}
+
+
+
+header {
+   text-align: center;
+   padding-bottom: 3%;
+   padding-top: 3%;
+}
+
+
+section {
+  background: white;
+  text-align: left;
+  padding-left: 30%;
+}
+
+
+
+#btn1, #btn2{
+    margin-left: 10%;
+}
+
+#resultado {
+  padding-left: 5%;
+}
+
+form {
+  padding-left: 5%;
+}
+
+footer {
+  background: #eee;
+  text-align: center;
+  margin-top: 4%;
+}
+

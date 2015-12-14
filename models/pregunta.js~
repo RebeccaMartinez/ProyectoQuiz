@@ -1,0 +1,41 @@
+function Pregunta(preg){
+  this.preg = preg;
+  this.vista;
+}
+
+Pregunta.prototype.getTipo = function(){
+  return this.vista;
+}
+
+Pregunta.prototype.getPreg = function(){
+  return this.preg;
+}
+
+/*Pregunta.prototype.Tipo = function() {
+  if(this instanceof PreguntaCorta){
+    this.vista = "<input type='text' name='respuesta' placeholder='Responda aquí' autofocus=''>";
+  }
+  else if (this instanceof PreguntaLarga) {
+    this.vista = "<textarea type='text' name='respuesta' rows='5' cols='50' placeholder='Responda aquí' autofocus=''></textarea>";
+  }
+  else if(this instanceof PSeleccionSimple){
+      var aux = [];
+      for(var i=0; i<this.opciones.length; i++){
+      aux[i] = "<input type='radio' name='respuesta' + value="this.opciones[i] + "</option>";
+      }
+      this.vista = aux;
+  }
+  else{
+      var aux = [];
+      for(var i=0; i<this.opciones.length; i++){
+	aux[i] = "<option>" + this.opciones[i] + "</option>" 
+	aux.unshift("<select name='respuesta[]' size=" + this.opciones.length + " multiple>");
+	aux.push("</select>");
+
+	this.vista = aux;
+      }
+  }
+}*/
+
+module.exports = Pregunta;
+
