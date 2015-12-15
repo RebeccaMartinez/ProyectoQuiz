@@ -75,21 +75,21 @@ exports.edit = function(req,res){
 };
 
 exports.update = function(req,res){
+	var quiz = models.Quiz.build(req.body.quiz);
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
-
-	req.quiz
-	.validate()
-	.then(
-		function(err){
-			if(err){
-				res.render('quizes/edit',{quiz:req.quiz,errors:err.errors});
-			}else{
-				req.quiz.save({fields:["pregunta","respuesta"]})
-				.then(function(){
-					res.redirect('/quizes');
-				});
-			}
-		}
-	);
+	var err = models.Quiz.build(req.body.quiz).validate();
+	console.log("QUIIIIIIIIIZ" + quiz);
+	console.log(err);
+	if(err === null){
+		quiz
+		.save({ fields: ["pregunta", "respuesta"]})
+		.then(function(){
+			res.redirect('/quizes');
+		});
+		//redireccionamos a la lista de preguntas
+	}
+	else {
+		res.render('quizes/new', {quiz: quiz, errors: err});
+	}
 };
