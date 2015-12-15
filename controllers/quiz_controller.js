@@ -52,8 +52,6 @@ exports.newq = function(req, res) {
 exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
 	var err = models.Quiz.build(req.body.quiz).validate();
-	console.log("QUIIIIIIIIIZ" + quiz);
-	console.log(err);
 	if(err === null){
 		quiz
 		.save({ fields: ["pregunta", "respuesta"]})
@@ -79,8 +77,6 @@ exports.update = function(req,res){
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
 	var err = models.Quiz.build(req.body.quiz).validate();
-	// console.log("QUIIIIIIIIIZ" + quiz);
-	console.log(err);
 	if(err === null){
 		req.quiz
 		.save({ fields: ["pregunta", "respuesta"]})
@@ -92,4 +88,10 @@ exports.update = function(req,res){
 	else {
 		res.render('quizes/edit', {quiz: quiz, errors: err});
 	}
+};
+
+exports.destroy = function(req, res){
+	req.quiz.destroy().then( function(){
+		res.redirect('/quizes');
+	}).catch(function(error){next(error)});
 };

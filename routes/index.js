@@ -19,6 +19,7 @@ router.get('/quizes/preguntas/new', quizController.newq);
 router.post('/quizes/create', quizController.create);
 router.get('/quizes/:id/edit',quizController.edit);
 router.put('/quizes/:id', quizController.update);
+router.delete('/quizes/:id', quizController.destroy);
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
