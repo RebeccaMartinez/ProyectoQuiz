@@ -3,11 +3,13 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			pregunta: {
 				type: DataTypes.STRING,
-				validate:{ notEmpty : {msg:"* Falta poner la pregunta!"}}
+				allowNull: false,
+				validate:{ notEmpty:{msg:"* Falta poner la pregunta!"}}
 			},
 			respuesta:{
 				type: DataTypes.STRING,
-				validate:{ notEmpty : {msg:"* Falta poner la respuesta!"}}
+				allowNull: false,
+				validate:{ notEmpty:{msg:"* Falta poner la respuesta!"}}
 			}
 		});
 };
