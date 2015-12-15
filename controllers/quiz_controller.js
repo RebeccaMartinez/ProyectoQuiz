@@ -1,6 +1,6 @@
 var models = require('../models/models.js');
 
-exports.load= function(req,res,next,quizId){
+exports.load= function(req,res,next,quizId) {
 	models.Quiz.find(quizId).then(
 		function(quiz){
 			if(quiz){
@@ -39,43 +39,18 @@ exports.answer = function(req, res){
 	});
 };
 
-
-
-
-/*;
-var quiz = new Quiz();
-var current = quiz.randomQuestion();
-
-exports.question = function(req,res) {
-	current = quiz.randomQuestion();
-	res.render('quizes/question', {pregunta: current.pregunta });
-};
-exports.answer = function(req, res) {
-	var c = 'Incorrecto';
-	if (current.respuesta(req.query.respuesta)) { c = 'Correcto'; }
-	res.render('quizes/answer', {respuesta: c});
+exports.newq = function(req, res) {
+	var quiz = models.Quiz.build ( //Crea objeto quiz
+			{ pregunta: "Pregunta", respuesta: "Respuesta"}
+		);
+	res.render('quizes/new', { quiz: quiz });
 };
 
-exports.questions = function(req,res) {
-	var nPreg = quiz.numQuestions();
-	var array = new Array(nPreg);
-	for(var i=0; i<nPreg; i++) {
-		array[i] = quiz.getQ(i);
-	}
-	res.render('quizes/questions', {prg: array});
+//POST /quizes/create
+exports.create = function(req, res) {
+	var quiz = models.Quiz.build(req.body.quiz);
+	//guarda en la base de datos los campos pregunta y respuesta de quiz
+	quiz.save({ fields: ["pregunta", "respuesta"]}).then(function(){
+		res.redirect('/quizes');  //redireccionamos a la lista de preguntas
+	})
 };
-
-exports.specificQuestion = function(req, res) {
-	var id = req.params.id;
-	var nPreg = quiz.numQuestions();
-	if(id < 1 || id > nPreg){
-		res.render('quizes/SpecificQuestion', {prg: "No existe esa pregunta."});
-	}
-	else if(isNaN(id) === true) {
-		res.render('quizes/SpecificQuestion', {prg: "Error en la URL."});
-	}
-	else {
-		current = quiz.q[id-1];
-		res.render('quizes/question', {pregunta: current.pregunta});
-	}
-};*/
