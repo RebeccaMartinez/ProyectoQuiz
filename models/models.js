@@ -30,6 +30,7 @@ var quiz_path = path.join(__dirname,'quiz');
 var Quiz = sequelize.import(quiz_path);
 
 exports.Quiz = Quiz; //exportar definición de la tabla Quiz (models/quiz.js)
+exports.Sequelize = sequelize;
 
 //sequelize.sync() crea e inicia tabla de preguntas en la base de datos
 sequelize.sync().success(function() {
