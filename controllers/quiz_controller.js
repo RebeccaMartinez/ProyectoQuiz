@@ -75,14 +75,14 @@ exports.edit = function(req,res){
 };
 
 exports.update = function(req,res){
-	var quiz = models.Quiz.build(req.body.quiz);
+
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
 	var err = models.Quiz.build(req.body.quiz).validate();
-	console.log("QUIIIIIIIIIZ" + quiz);
+	// console.log("QUIIIIIIIIIZ" + quiz);
 	console.log(err);
 	if(err === null){
-		quiz
+		req.quiz
 		.save({ fields: ["pregunta", "respuesta"]})
 		.then(function(){
 			res.redirect('/quizes');
