@@ -15,15 +15,15 @@
 		<h1>Quiz: el juego de las preguntas</h1>
 	</header>
 	<section class="main" id="s1">
-    <% if(errors.length) { %>
-      <span id='ErrorMsgs'>
-        Corregir errores:<br/>
-        <% for (var i in errors ) { %>
-          <span><%= errors[i].message %></span><br/>
-        <% } %>
-      </span>
-    <% } %>
 
+    <% if(errors["pregunta"]) { %>
+        <span class='ErrorMsgs'><%= errors["pregunta"] %></span>
+    <% } %>
+    <br>
+    <% if(errors["respuesta"]) { %>
+        <span class='ErrorMsgs'><%= errors["respuesta"] %></span>
+    <% } %>
+    <br><br>
 		<%- body %>
 	</section>
 	<footer class="main" id="f1">

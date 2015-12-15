@@ -54,7 +54,7 @@ footer {
   margin-top: 4%;
 }
 
-#ErroMsgs {
-  color:#f61;
+.ErrorMsgs {
+  color:red;
   font-size: smaller
 }

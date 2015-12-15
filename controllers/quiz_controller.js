@@ -47,19 +47,25 @@ exports.newq = function(req, res) {
 };
 
 //POST /quizes/create
+
+
 exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
-	console.log(quiz);
-	quiz.validate()
-	.then(function(err){
-		if(err){
-			res.render('quizez/new',{quiz:quiz,errors:err.errors});
-		}else{
-				quiz.save({ fields: ["pregunta", "respuesta"]})
-				.then(function(){res.redirect('/quizes');
-				//redireccionamos a la lista de preguntas
-			});
-		}
-	});
-	//guarda en la base de datos los campos pregunta y respuesta de quiz
+	var err = models.Quiz.build(req.body.quiz).validate();
+	console.log("QUIIIIIIIIIZ" + quiz);
+	console.log(err);
+	if(err === null){
+		quiz
+		.save({ fields: ["pregunta", "respuesta"]})
+		.then(function(){
+			res.redirect('/quizes');
+		});
+		//redireccionamos a la lista de preguntas
+	}
+	else {
+		res.render('quizes/new', {quiz: quiz, errors: err});
+	}
+
+
 };
+	//guarda en la base de datos los campos pregunta y respuesta de quiz
