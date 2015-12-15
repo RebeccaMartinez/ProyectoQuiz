@@ -6,20 +6,20 @@ exports.index = function(req, res, next) {
 
 //GET /quizes/:id --> este es el metodo question de antes.
 exports.show = function(req, res) {
-	models.Quiz.find(req.params.quizId).then(function(quiz){
+	models.Quiz.find(req.params.id).then(function(quiz){
 		res.render('quizes/show', { quiz: quiz });
-	})
+	});
 };
 
 //GET /quizes/:id/answer
 exports.answer = function(req, res){
-	models.Quiz.find(req.params.quizId).then(function(quiz){
+	models.Quiz.find(req.params.id).then(function(quiz){
 		if(req.query.respuesta === quiz.respuesta) {
 			res.render('quizes/answer', { quiz: quiz, respuesta: 'Correcto' });
 		} else {
-			res.render('quizes/answer', { quiz: quiz, respuesta: 'Inorrecto' })
+			res.render('quizes/answer', { quiz: quiz, respuesta: 'Incorrecto' });
 		}
-	})
+	});
 };
 
 

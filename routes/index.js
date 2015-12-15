@@ -10,8 +10,8 @@ router.get('/', function(req, res) {
 
 //Visualizar elementos de una colección de recursos
 router.get('/quizes', quizController.index);
-router.get('/quizes/quizId(\\d+)', quizController.show);
-router.get('/quizes/quizId(\\d+)/answer', quizController.answer);
+router.get('/quizes/:id', quizController.show);
+router.get('/quizes/:id/answer', quizController.answer);
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
