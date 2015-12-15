@@ -90,6 +90,6 @@ exports.update = function(req,res){
 		//redireccionamos a la lista de preguntas
 	}
 	else {
-		res.render('quizes/new', {quiz: quiz, errors: err});
+		res.render('quizes/edit', {quiz: quiz, errors: err});
 	}
 };
