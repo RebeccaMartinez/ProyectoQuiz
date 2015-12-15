@@ -1,7 +1,9 @@
 var models = require('../models/models.js');
 
-exports.index = function(req, res, next) {
-	res.render('index', { title: 'Quiz' });
+exports.index = function(req, res) {
+	models.Quiz.findAll().then(function(quizes){
+		res.render('quizes/index', { quizes: quizes });
+	})
 };
 
 //GET /quizes/:id --> este es el metodo question de antes.
