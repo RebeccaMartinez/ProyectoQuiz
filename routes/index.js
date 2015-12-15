@@ -15,6 +15,8 @@ router.param(':id',quizController.load);
 router.get('/quizes', quizController.index);
 router.get('/quizes/:id', quizController.show);
 router.get('/quizes/:id/answer', quizController.answer);
+router.get('/quizes/preguntas/new', quizController.newq);
+router.post('/quizes/create', quizController.create);
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
