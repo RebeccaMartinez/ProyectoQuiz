@@ -1,9 +1,0 @@
-
-<form method="get" action="/quizes/answer">
-	<p>Pregunta: <%= pregunta.preg %> </p>
-	<% for(var i=0; i < opciones.length; i++) {%>
-	  <%- pregunta.vista[i] %>
-	<input type="submit" class="btn btn-primary btn-xs" value="Enviar">
-</form>
-
-
