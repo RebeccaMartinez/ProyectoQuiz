@@ -49,12 +49,16 @@ exports.newq = function(req, res) {
 //POST /quizes/create
 exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
-	quiz.validate().then(function(err){
+	quiz
+	.validate()
+	.then(function(err){
 		if(err){
 			res.render('quizez/new',{quiz:quiz,errors:err.errors});
 		}else{
-				quiz.save({ fields: ["pregunta", "respuesta"]}).then(function(){
-				res.redirect('/quizes');  //redireccionamos a la lista de preguntas
+				quiz
+				.save({ fields: ["pregunta", "respuesta"]})
+				.then(function(){res.redirect('/quizes');
+				//redireccionamos a la lista de preguntas
 			});
 		}
 	});
