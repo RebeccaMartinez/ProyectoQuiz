@@ -20,11 +20,11 @@ router.get('/logout', sessionController.destroy);
 router.get('/quizes', quizController.index);
 router.get('/quizes/:id', quizController.show);
 router.get('/quizes/:id/answer', quizController.answer);
-router.get('/quizes/preguntas/new', quizController.newq);
-router.post('/quizes/create', quizController.create);
-router.get('/quizes/:id/edit',quizController.edit);
-router.put('/quizes/:id', quizController.update);
-router.delete('/quizes/:id', quizController.destroy);
+router.get('/quizes/preguntas/new', sessionController.loginRequired, quizController.newq);
+router.post('/quizes/create', sessionController.loginRequired, quizController.create);
+router.get('/quizes/:id/edit', sessionController.loginRequired,quizController.edit);
+router.put('/quizes/:id', sessionController.loginRequired, quizController.update);
+router.delete('/quizes/:id', sessionController.loginRequired, quizController.destroy);
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
