@@ -16,7 +16,7 @@ exports.autenticar = function(login, password, callback) {
 		else {
 			callback(new Error('La password es incorrecta'));
 		}
-	})
+	});
 };
 
 exports.newq = function(req, res){
@@ -31,7 +31,7 @@ exports.create = function(req, res){
 	var err = models.User.build(req.body.user).validate();
 	if(err === null){
 		user
-		.save({ fields: ["nombre", "password"]})
+		.save({ fields: ["username", "password"]})
 		.then(function(){
 			res.redirect('/');
 		});

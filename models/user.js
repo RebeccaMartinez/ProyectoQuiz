@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 				// 			throw new Error("IIntroduza una contraseña más larga")
 				// 		}
 				// 	}
-				
+
 
 			},
 			id: {
