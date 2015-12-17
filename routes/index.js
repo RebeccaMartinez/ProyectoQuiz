@@ -3,6 +3,7 @@ var router = express.Router();
 
 var quizController = require('../controllers/quiz_controller');
 var sessionController = require('../controllers/session_controller');
+var userController = require('../controllers/user_controller');
 /* GET home page.  */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' ,errors:[]});
@@ -30,4 +31,7 @@ router.delete('/quizes/:id', sessionController.loginRequired, quizController.des
 
 //router.get('/quizes/questions', quizController.questions);
 
+//Rutas de creacion de usuario
+router.get('/signin', userController.newq);
+router.post('/signin', userController.create);
 module.exports = router;
