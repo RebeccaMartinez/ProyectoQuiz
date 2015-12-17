@@ -25,13 +25,15 @@ exports.newq = function(req, res){
 		var user = models.User.build ( //Crea objeto quiz
 			{ username: "Username", password: "Password"}
 		);
-	res.render('users/new', { user: user ,errors:[]});
+	res.render('users/new', { user: user, errors:[]});
 };
 
 exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
 	console.log("Cuerpoooooo : "+ user);
 	var err = models.User.build(req.body.user).validate();
+	console.log('cuerppooooooooooo' + user.username);
+	console.log('cuerppooooooooooo' + user.password);
 	if(err === null){
 		user
 		.save({ fields: ["username", "password"]})
