@@ -49,8 +49,13 @@ exports.newq = function(req, res) {
 //POST /quizes/create
 
 exports.create = function(req, res) {
+	models.Quiz.find({where:{pregunta:'ASD'}})
+	.then(function(valor){
+		console.log("asdasdasdasdasdasd  :"+valor.UserId);
+	});
 	var quiz = models.Quiz.build(req.body.quiz);
 	console.log("Cuerpazzzooooo :" +quiz);
+	// console.log("IIIIIIIIIIIID :" + prueba);
 	var err = models.Quiz.build(req.body.quiz).validate();
 	console.log('quiiiiz' + quiz.pregunta);
 	if(err === null){

@@ -30,6 +30,11 @@ var quiz_path = path.join(__dirname,'quiz');
 var user_path = path.join(__dirname,'user');
 var Quiz = sequelize.import(quiz_path);
 var User = sequelize.import(user_path);
+
+//Relaciones de tablas
+User.hasMany(Quiz);
+Quiz.belongsTo(User);
+
 exports.Quiz = Quiz; //exportar definición de la tabla Quiz (models/quiz.js)
 exports.User = User;
 exports.Sequelize = sequelize;
