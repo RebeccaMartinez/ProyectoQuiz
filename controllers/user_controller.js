@@ -10,7 +10,7 @@ var users =  {
 
 exports.autenticar = function(login, password, callback) {
 	models.User.find({where: {username: login}}).then(function(user){
-		console.log('pass:' + user.password)
+		console.log('pass:' + user.password);
 		if(user.password === password){
 			console.log('uuuuuuuuuser:' + user.username);
 			callback(null, user);
@@ -30,6 +30,7 @@ exports.newq = function(req, res){
 
 exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
+	console.log("Cuerpoooooo : "+ user);
 	var err = models.User.build(req.body.user).validate();
 	if(err === null){
 		user
@@ -43,6 +44,7 @@ exports.create = function(req, res){
 	else {
 		res.render('users/new', {user: user, errors: err});
 		console.log("NO Registrado exitosamente :" + err.username);
+		console.log("NO Registrado exitosamente :" + err.password);
 
 	}
 
