@@ -1,3 +1,5 @@
+var models = require('../models/models.js');
+
 var users =  {
 	admin: {id:1, username:"admin", password:"1234"},
 	rebecca: {id:2, username:"rebecca", password:"4321"}
@@ -7,17 +9,14 @@ var users =  {
 //Si autenticación falla o hay error se ejecuta callback(error)
 
 exports.autenticar = function(login, password, callback) {
-	if(users[login]){
-		if(password === users[login].password){
-			callback(null, users[login]);
+	models.User.find(login).then(function(user){
+		if(query.password === password){
+			callback(null, req.body);
 		}
 		else {
 			callback(new Error('La password es incorrecta'));
 		}
-	}
-	else {
-		callback(new Error('El usuario no existe'));
-	}
+	})
 };
 
 exports.newq = function(req, res){
