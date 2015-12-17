@@ -7,7 +7,7 @@ var users =  {
 //Si autenticación falla o hay error se ejecuta callback(error)
 
 exports.autenticar = function(login, password, callback) {
-	if(user[login]){
+	if(users[login]){
 		if(password === users[login].password){
 			callback(null, users[login]);
 		}
