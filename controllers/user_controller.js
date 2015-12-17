@@ -10,7 +10,9 @@ var users =  {
 
 exports.autenticar = function(login, password, callback) {
 	models.User.find({where: {username: login}}).then(function(user){
-		if(user[password] === password){
+		console.log('pass:' + user.password)
+		if(user.password === password){
+			console.log('uuuuuuuuuser:' + user.username);
 			callback(null, user);
 		}
 		else {
@@ -21,7 +23,7 @@ exports.autenticar = function(login, password, callback) {
 
 exports.newq = function(req, res){
 		var user = models.User.build ( //Crea objeto quiz
-			{ username: "Nombre", password: "Password"}
+			{ username: "Username", password: "Password"}
 		);
 	res.render('users/new', { user: user ,errors:[]});
 };
