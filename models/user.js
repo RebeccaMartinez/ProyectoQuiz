@@ -7,13 +7,13 @@ module.exports = function(sequelize, DataTypes) {
 			},
 			password:{
 				type: DataTypes.STRING,
-				validate: { notEmpty : {msg:"* Falta poner la contraseña!"},
+				validate: { notEmpty : {msg:"* Falta poner la contraseña!"}}
 				// isLongEnough: function(val){
 				// 		if(val.length < 7){
 				// 			throw new Error("IIntroduza una contraseña más larga")
 				// 		}
 				// 	}
-				}
+				
 
 			},
 			id: {

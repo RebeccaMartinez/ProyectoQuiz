@@ -9,9 +9,9 @@ var users =  {
 //Si autenticación falla o hay error se ejecuta callback(error)
 
 exports.autenticar = function(login, password, callback) {
-	models.User.find(login).then(function(user){
-		if(query.password === password){
-			callback(null, req.body);
+	models.User.find({where: {username: login}}).then(function(user){
+		if(user[password] === password){
+			callback(null, user);
 		}
 		else {
 			callback(new Error('La password es incorrecta'));
@@ -35,10 +35,13 @@ exports.create = function(req, res){
 		.then(function(){
 			res.redirect('/');
 		});
+		console.log("Registrado exitosamente :" + user);
 		//redireccionamos a incio
 	}
 	else {
 		res.render('users/new', {user: user, errors: err});
+		console.log("NO Registrado exitosamente :" + err.username);
+
 	}
 
 };

@@ -47,4 +47,13 @@ sequelize.sync().then(function() {
 			.then(function(){console.log('Base de datos inicializada');});
 		}
 	});
+	User.count().then(function (count) {
+		if(count === 0) {
+			User.create({username: 'admin',
+						password: 'admin'
+					})
+			.then(function(){console.log('Creado el admin');});
+		}
+	});
+
 });
