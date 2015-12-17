@@ -51,6 +51,7 @@ exports.newq = function(req, res) {
 exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
 	var err = models.Quiz.build(req.body.quiz).validate();
+	console.log('quiiiiz' + quiz.pregunta);
 	if(err === null){
 		quiz
 		.save({ fields: ["pregunta", "respuesta"]})
