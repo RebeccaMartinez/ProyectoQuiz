@@ -16,6 +16,8 @@ footer {
   position: absolute;
   bottom: 0;
   width:100%;
+  text-align: center;
+  background: #eee;
 }
 
 #img_princi{
@@ -43,13 +45,7 @@ form {
   padding-left: 5%;
 }
 
-footer {
-  background: #eee;
-  text-align: center;
-  margin-top: 4%;
-}
-
 .ErrorMsgs {
   color:red;
-  font-size: smaller
+  font-size: bold;
 }
