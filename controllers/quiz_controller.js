@@ -41,7 +41,7 @@ exports.answer = function(req, res){
 
 exports.newq = function(req, res) {
 	var quiz = models.Quiz.build ( //Crea objeto quiz
-			{ pregunta: "Pregunta", respuesta: "Respuesta"}
+			{ pregunta: "Pregunta", respuesta: "Respuesta", UserId: "UserId"}
 		);
 	res.render('quizes/new', { quiz: quiz ,errors:[]});
 };
@@ -49,18 +49,18 @@ exports.newq = function(req, res) {
 //POST /quizes/create
 
 exports.create = function(req, res) {
-	models.Quiz.find({where:{pregunta:'ASD'}})
+	/*models.Quiz.find({where:{pregunta:'prueba4'}})
 	.then(function(valor){
 		console.log("asdasdasdasdasdasd  :"+valor.UserId);
-	});
+	});*/
 	var quiz = models.Quiz.build(req.body.quiz);
-	console.log("Cuerpazzzooooo :" +quiz);
 	// console.log("IIIIIIIIIIIID :" + prueba);
 	var err = models.Quiz.build(req.body.quiz).validate();
 	console.log('quiiiiz' + quiz.pregunta);
+	console.log('iiiiiiiiiiiiiiiiiid' + quiz.UserId);
 	if(err === null){
 		quiz
-		.save({ fields: ["pregunta", "respuesta"]})
+		.save({ fields: ["pregunta", "respuesta", "UserId"]})
 		.then(function(){
 			res.redirect('/quizes');
 		});
