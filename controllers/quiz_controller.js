@@ -87,7 +87,6 @@ exports.edit = function(req,res){
 };
 
 exports.update = function(req,res){
-
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
 	var err = models.Quiz.build(req.body.quiz).validate();

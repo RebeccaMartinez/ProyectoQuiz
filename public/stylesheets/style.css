@@ -19,6 +19,9 @@ footer {
   text-align: center;
   background: #eee;
 }
+h3 {
+  padding-bottom: 6%;
+}
 
 #img_princi{
   width: 130%;
