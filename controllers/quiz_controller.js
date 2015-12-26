@@ -59,8 +59,6 @@ exports.newq = function(req, res) {
 exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
 	var err = models.Quiz.build(req.body.quiz).validate();
-	console.log('iiiiiiiiiiiiiiiiiid' + quiz.UserId);
-	console.log('tiiiiiiiiiiiiiipooooooooo:' + quiz.tipo);
 	if(err === null){
 		quiz
 		.save({ fields: ["pregunta", "respuesta", "tipo", "UserId"]})
@@ -72,7 +70,6 @@ exports.create = function(req, res) {
 	else {
 		res.render('quizes/new', {quiz: quiz, errors: err});
 	}
-
 };
 
 
