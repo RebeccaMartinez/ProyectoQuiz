@@ -1,16 +1,16 @@
-<div class="col-md-offset-3">
-<h2>Login</h2>
+<div class="col-md-offset-5">
+<h2 id="h2-login">Login</h2>
 <form method='POST' action='/login'>
-	<div class="field">
-		<lablel for="login">Login: </label><br />
-		<input type="text" id="login" name="login" size="30" required="required" />
+	<div class="form-group">
+		<lablel for="login">Username: </label>
+		<input type="text" id="login" class="form-control" name="login" rows="3" required="required" />
 	</div>
-	<div class="field">
-		<lablel for="password">Password: </label><br />
-		<input type="password" id="password" name="password" size="30" required="required" />
+	<div class="form-group">
+		<lablel for="password">Password: </label>
+		<input type="password" id="password" class="form-control" name="password" size="30" required="required" />
 	</div>
 	<div class="actions">
-		<input type="submit" name="commit" value="Login" />
+		<button type="submit" class="btn btn-primary" name="commit">Login</button>
 	</div>
 </form>
 </div>
