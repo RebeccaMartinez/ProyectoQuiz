@@ -26,6 +26,8 @@ router.post('/quizes/create', sessionController.loginRequired, quizController.cr
 router.get('/quizes/:id/edit', sessionController.loginRequired,quizController.edit);
 router.put('/quizes/:id', sessionController.loginRequired, quizController.update);
 router.delete('/quizes/:id', sessionController.loginRequired, quizController.destroy);
+router.get('/quizes/user/perfil', quizController.perfil);
+
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 

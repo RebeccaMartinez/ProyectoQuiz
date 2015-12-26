@@ -23,7 +23,7 @@
             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <%} else { %>
             <li><a href="/quizes/preguntas/new"> Crear pregunta</a></li>
-            <li><a href="#"><span class="right"></span><%= session.user.username %></a></li>
+            <li><a href="/quizes/user/perfil"><span class="right"></span><%= session.user.username %></a></li>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
           <%}%>
         </ul>

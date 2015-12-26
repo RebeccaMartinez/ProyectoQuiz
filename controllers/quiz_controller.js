@@ -21,6 +21,14 @@ exports.index = function(req, res) {
 	});
 };
 
+//Funcion que muestra las preguntas de un usuario
+exports.perfil = function(req, res) {
+	models.Quiz.findAll().then(function(quizes){
+		res.render('quizes/perfil', { quizes: quizes ,errors:[]});
+	}).catch(function(error){next(error);
+	});
+};
+
 //GET /quizes/:id --> este es el metodo question de antes.
 exports.show = function(req, res) {
 	models.Quiz.find(req.params.id).then(function(quiz){
