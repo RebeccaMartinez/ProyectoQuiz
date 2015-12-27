@@ -10,7 +10,6 @@ var users =  {
 
 exports.autenticar = function(login, password, callback) {
 	models.User.find({where: {username: login}}).then(function(user){
-		console.log('pass:' + user.password);
 		if(user.password === password){
 			console.log('uuuuuuuuuser:' + user.username);
 			callback(null, user);
@@ -31,11 +30,18 @@ exports.newq = function(req, res){
 exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
 	var err = models.User.build(req.body.user).validate();
+	models.User.find({where: {username: "username"}}).then(function(){
+		concole.log("usuuuuu existe yaaaaa");
+		res.redirect('/quizes');
+		//TODO: poner mensaje de erro. El usuario ya esxite!!!
+	});
+
 	if(err === null){
 		user
 		.save({ fields: ["username", "password"]})
 		.then(function(){
-			res.redirect('/');
+			console.log("Usuuuu ya existe");
+			res.redirect('/quizes');
 		});
 		console.log("Registrado exitosamente :" + user);
 		//redireccionamos a incio
