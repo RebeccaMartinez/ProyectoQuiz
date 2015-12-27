@@ -30,10 +30,7 @@ exports.newq = function(req, res){
 
 exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
-	console.log("Cuerpoooooo : "+ user);
 	var err = models.User.build(req.body.user).validate();
-	console.log('cuerppooooooooooo' + user.username);
-	console.log('cuerppooooooooooo' + user.password);
 	if(err === null){
 		user
 		.save({ fields: ["username", "password"]})
@@ -45,9 +42,27 @@ exports.create = function(req, res){
 	}
 	else {
 		res.render('users/new', {user: user, errors: err});
-		console.log("NO Registrado exitosamente :" + err.username);
-		console.log("NO Registrado exitosamente :" + err.password);
-
 	}
+};
 
+exports.newpass = function(req, res){
+	var user=req.user;
+	res.render('users/updatepass',{user:user, errors :[]});
+};
+
+exports.passw = function(req, res){
+	req.user.password = req.body.user.password;
+	//req.quiz.respuesta = req.body.quiz.respuesta;
+	var err = models.User.build(req.body.user).validate();
+	if(err === null){
+		req.quiz
+		.save({ fields: ["password"]})
+		.then(function(){
+			res.redirect('/quizes');
+		});
+		//redireccionamos a la lista de preguntas
+	}
+	else {
+		res.render('quizes/edit', {quiz: quiz, errors: err});
+	}
 };

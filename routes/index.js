@@ -36,4 +36,8 @@ router.get('/quizes/user/perfil', quizController.perfil);
 //Rutas de creacion de usuario
 router.get('/signin', userController.newq);
 router.post('/signin', userController.create);
+router.get('/user/perfil/newpass', sessionController.loginRequired, userController.newpass);
+router.put('/user/perfil/passw', sessionController.loginRequired, userController.passw);
+//router.get('/quizes/user/perfil/nombre', userController.nombre);
+
 module.exports = router;
