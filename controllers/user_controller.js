@@ -30,25 +30,26 @@ exports.newq = function(req, res){
 exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
 	var err = models.User.build(req.body.user).validate();
-	models.User.find({where: {username: "username"}}).then(function(){
-		concole.log("usuuuuu existe yaaaaa");
-		res.redirect('/quizes');
-		//TODO: poner mensaje de erro. El usuario ya esxite!!!
-	});
-
-	if(err === null){
-		user
-		.save({ fields: ["username", "password"]})
-		.then(function(){
-			console.log("Usuuuu ya existe");
+	models.User.find({where: {username: user["username"]}}).then(function(result){
+		if(result != null){
+			console.log("usuuuuu existe yaaaaa");
 			res.redirect('/quizes');
-		});
-		console.log("Registrado exitosamente :" + user);
-		//redireccionamos a incio
-	}
-	else {
-		res.render('users/new', {user: user, errors: err});
-	}
+		}
+		else{
+			if(err === null){
+				user
+				.save({ fields: ["username", "password"]})
+				.then(function(){
+					res.redirect('/');
+				});
+				console.log("Registrado exitosamente :" + user);
+				//redireccionamos a incio
+			}
+			else {
+				res.render('users/new', {user: user, errors: err});
+			}			
+		}
+	});
 };
 
 exports.newpass = function(req, res){
