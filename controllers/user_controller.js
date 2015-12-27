@@ -20,6 +20,13 @@ exports.autenticar = function(login, password, callback) {
 	});
 };
 
+exports.index = function(req, res) {
+	models.User.findAll().then(function(users){
+		res.render('users/index', { users: users ,errors:[]});
+	}).catch(function(error){next(error);
+	});
+};
+
 exports.newq = function(req, res){
 		var user = models.User.build ( //Crea objeto quiz
 			{ username: "Username", password: "Password"}
