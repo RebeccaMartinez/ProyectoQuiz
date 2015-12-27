@@ -31,11 +31,11 @@ exports.create = function(req, res){
 	var user = models.User.build(req.body.user);
 	var err = models.User.build(req.body.user).validate();
 	models.User.find({where: {username: user["username"]}}).then(function(result){
-		if(result != null){
+		if(result != null){ //Si existe un usuario con ese nombre en la base de datos
 			console.log("usuuuuu existe yaaaaa");
-			res.redirect('/quizes');
+			res.render('users/new', {errors: "El usuario ya existe"});
 		}
-		else{
+		else{ //Si no existe el usuario
 			if(err === null){
 				user
 				.save({ fields: ["username", "password"]})
@@ -47,7 +47,7 @@ exports.create = function(req, res){
 			}
 			else {
 				res.render('users/new', {user: user, errors: err});
-			}			
+			}
 		}
 	});
 };
