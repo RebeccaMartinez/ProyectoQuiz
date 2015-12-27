@@ -19,12 +19,13 @@ footer {
   text-align: center;
   background: #eee;
 }
-h3 {
-  padding-bottom: 6%;
-}
 
 #img_princi{
   width: 130%;
+}
+
+#img_login {
+  width: 120%;
 }
 
 #div_texto{
@@ -36,12 +37,20 @@ h3 {
   text-align: center;
 }
 
+#btn_registro {
+  margin-top: 2%;
+}
+
 #btn1, #btn2{
     margin-left: 10%;
 }
 
 #resultado {
   padding-left: 5%;
+}
+
+#div_login {
+  padding-top: 5%;;
 }
 
 form {
@@ -54,9 +63,9 @@ td {
 }
 
 #login, #password {
-  width: 50%;
+  width: 100%;
 }
-#h2-login {
+#h2-login, #h2-registro, #h2-preg {
   padding-left: 5%;
   padding-bottom: 2%;
 }
@@ -64,4 +73,5 @@ td {
 .ErrorMsgs {
   color:red;
   font-size: bold;
+  padding-left: 5%;
 }
