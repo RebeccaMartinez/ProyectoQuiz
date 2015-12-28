@@ -1,10 +1,5 @@
 var models = require('../models/models.js');
 
-var users =  {
-	admin: {id:1, username:"admin", password:"1234"},
-	rebecca: {id:2, username:"rebecca", password:"4321"}
-};
-
 //comprueba si el usuario está registrad en users.
 //Si autenticación falla o hay error se ejecuta callback(error)
 

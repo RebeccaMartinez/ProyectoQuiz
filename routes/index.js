@@ -11,7 +11,6 @@ router.get('/', function(req, res) {
 
 //Autoload de comando con quizId
 router.param(':id',quizController.load);
-router.param(':id2',quizController.load2);
 
 //Definición de rutas de sesión
 router.get('/login', sessionController.newq);

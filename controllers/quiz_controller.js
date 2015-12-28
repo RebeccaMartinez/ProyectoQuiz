@@ -14,19 +14,6 @@ exports.load= function(req,res,next,quizId) {
 	});
 };
 
-//TODO: cambiaaar?? --> No es necesaria la funcion pero es para que no se ejecute el load anterior
-exports.load2= function(req,res,next,UserId) {
-	models.Quiz.findAll().then(
-		function(quiz){
-			if(quiz){
-				req.quiz = quiz;
-				next();
-			}
-		}
-	).catch(function(error){next(error);
-	});
-};
-
 exports.index = function(req, res) {
 	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index', { quizes: quizes ,errors:[]});
