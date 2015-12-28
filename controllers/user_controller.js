@@ -27,6 +27,17 @@ exports.index = function(req, res) {
 	});
 };
 
+exports.show = function(req, res) {
+	models.Quiz.findAll({
+		where: {
+			UserId: req.params.id2
+		}
+	}).then(function(quizes){
+		console.log("paraaaaaaaaams.id" + req.params.id2);
+		res.render('users/mostrar', { quizes: quizes ,errors:[] });
+	});
+};
+
 exports.newq = function(req, res){
 		var user = models.User.build ( //Crea objeto quiz
 			{ username: "Username", password: "Password"}

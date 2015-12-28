@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
 
 //Autoload de comando con quizId
 router.param(':id',quizController.load);
+router.param(':id2',quizController.load2);
 
 //Definición de rutas de sesión
 router.get('/login', sessionController.newq);
@@ -35,10 +36,11 @@ router.get('/quizes/user/perfil', quizController.perfil);
 
 //Rutas de creacion de usuario
 router.get('/users', userController.index);
+router.get('/users/:id2', userController.show);
 router.get('/signin', userController.newq);
 router.post('/signin', userController.create);
-router.get('/user/perfil/newpass', sessionController.loginRequired, userController.newpass);
-router.put('/user/perfil/passw', sessionController.loginRequired, userController.passw);
+//router.get('/user/perfil/newpass', sessionController.loginRequired, userController.newpass);
+//router.put('/user/perfil/passw', sessionController.loginRequired, userController.passw);
 //router.get('/quizes/user/perfil/nombre', userController.nombre);
 
 module.exports = router;

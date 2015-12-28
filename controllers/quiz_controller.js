@@ -7,7 +7,20 @@ exports.load= function(req,res,next,quizId) {
 				req.quiz = quiz;
 				next();
 			}else{
-				next(new Error('No existe pregunta don el id es :'+ quizId));
+				next(new Error('No existe pregunta donde el id es :'+ quizId));
+			}
+		}
+	).catch(function(error){next(error);
+	});
+};
+
+//TODO: cambiaaar?? --> No es necesaria la funcion pero es para que no se ejecute el load anterior
+exports.load2= function(req,res,next,UserId) {
+	models.Quiz.findAll().then(
+		function(quiz){
+			if(quiz){
+				req.quiz = quiz;
+				next();
 			}
 		}
 	).catch(function(error){next(error);
