@@ -65,7 +65,7 @@ td {
 #login, #password {
   width: 100%;
 }
-#h2-login, #h2-registro, #h2-preg {
+#h2-login, #h2-registro, #h2-preg, #h2-editar{
   padding-left: 5%;
   padding-bottom: 2%;
 }
