@@ -99,7 +99,7 @@ exports.update = function(req,res){
 		req.quiz
 		.save({ fields: ["pregunta", "respuesta"]})
 		.then(function(){
-			res.redirect('/quizes');
+			res.redirect('/quizes/user/perfil');
 		});
 		//redireccionamos a la lista de preguntas
 	}
@@ -110,7 +110,7 @@ exports.update = function(req,res){
 
 exports.destroy = function(req, res){
 	req.quiz.destroy().then( function(){
-		res.redirect('/quizes');
+		res.redirect('/quizes/user/perfil');
 	}).catch(function(error){next(error);});
 };
 
