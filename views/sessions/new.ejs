@@ -4,6 +4,9 @@
 
 <div class="col-md-4 col-md-offset-2" id="div_login">
 <h2 id="h2-login">Login</h2>
+<% if(errors === "error") { %>
+	<p class="ErrorMsgs"> El usuario o la contraseña son incorrectos </p>
+<% } %>
 <form method='POST' action='/login'>
 	<div class="form-group">
 		<lablel for="login">Username: </label>

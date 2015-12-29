@@ -5,8 +5,10 @@ var models = require('../models/models.js');
 
 exports.autenticar = function(login, password, callback) {
 	models.User.find({where: {username: login}}).then(function(user){
+		if(user === null){
+			callback(new Error('El usuario no existe'));			
+		}
 		if(user.password === password){
-			console.log('uuuuuuuuuser:' + user.username);
 			callback(null, user);
 		}
 		else {

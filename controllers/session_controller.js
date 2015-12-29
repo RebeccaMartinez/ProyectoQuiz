@@ -25,8 +25,9 @@ exports.create = function(req, res){
 	userController.autenticar(login, password, function(error, user){
 		if(error){
 			console.log(error);
-			req.session.errors = [{"message": 'Se ha producido un error:' + error}];
-			res.redirect("/login");
+			req.session.errors = [{"message": 'Se ha producido un error:'}];
+			var err = "error";
+			res.render("sessions/new", {errors: err});
 			return;
 		}
 		//Crear req.session.user y guarda campos id y username
