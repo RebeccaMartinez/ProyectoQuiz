@@ -112,15 +112,10 @@ exports.destroy = function(req, res){
 };
 
 exports.randomQuestion = function(req, res, next){
-	var ran;
-	var total;
+	var ran, total;
 	models.Quiz.findAll().then(function (preg){
 		total = preg.length;
 		ran = Math.floor(Math.random()*total);
-	});
-
-	models.Quiz.find(ran).then(function(quiz){
-		console.log("raaaaaaaan" + ran);
-		res.render('quizes/random',  {quiz: quiz ,errors:[] });
+		res.render('quizes/random',  {quiz: preg[ran] ,errors:[] });
 	});
 };
