@@ -47,6 +47,16 @@ exports.answer = function(req, res){
 	});
 };
 
+exports.answer2 = function(req, res){
+	models.Quiz.find(req.params.id).then(function(quiz){
+		if(req.query.respuesta === req.quiz.respuesta) {
+			res.render('quizes/answerrandom', { quiz: req.quiz, respuesta: 'Correcto' ,errors:[]});
+		} else {
+			res.render('quizes/answerrandom', { quiz: req.quiz, respuesta: 'Incorrecto' ,errors:[]});
+		}
+	});
+};
+
 exports.newq = function(req, res) {
 	var quiz = models.Quiz.build ( //Crea objeto quiz
 			{ pregunta: "Pregunta", respuesta: "Respuesta", tipo: "tipo", UserId: "UserId"}
@@ -99,4 +109,18 @@ exports.destroy = function(req, res){
 	req.quiz.destroy().then( function(){
 		res.redirect('/quizes');
 	}).catch(function(error){next(error);});
+};
+
+exports.randomQuestion = function(req, res, next){
+	var ran;
+	var total;
+	models.Quiz.findAll().then(function (preg){
+		total = preg.length;
+		ran = Math.floor(Math.random()*total);
+	});
+
+	models.Quiz.find(ran).then(function(quiz){
+		console.log("raaaaaaaan" + ran);
+		res.render('quizes/random',  {quiz: quiz ,errors:[] });
+	});
 };

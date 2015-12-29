@@ -64,25 +64,3 @@ exports.create = function(req, res){
 		}
 	});
 };
-
-exports.newpass = function(req, res){
-	var user=req.user;
-	res.render('users/updatepass',{user:user, errors :[]});
-};
-
-exports.passw = function(req, res){
-	req.user.password = req.body.user.password;
-	//req.quiz.respuesta = req.body.quiz.respuesta;
-	var err = models.User.build(req.body.user).validate();
-	if(err === null){
-		req.quiz
-		.save({ fields: ["password"]})
-		.then(function(){
-			res.redirect('/quizes');
-		});
-		//redireccionamos a la lista de preguntas
-	}
-	else {
-		res.render('quizes/edit', {quiz: quiz, errors: err});
-	}
-};
