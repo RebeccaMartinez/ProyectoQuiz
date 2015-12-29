@@ -30,7 +30,6 @@ router.get('/quizes/user/perfil', quizController.perfil);
 router.get('/quizes/preguntas/test', quizController.randomQuestion);
 router.get('/quizes/:id/answer2', quizController.answer2);
 
-
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
 //router.get('/quizes/questions', quizController.questions);

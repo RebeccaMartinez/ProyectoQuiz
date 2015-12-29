@@ -1,4 +1,6 @@
 var models = require('../models/models.js');
+var index = 0;
+var puntuacion = 0;
 
 exports.load= function(req,res,next,quizId) {
 	models.Quiz.find(quizId).then(
@@ -50,6 +52,7 @@ exports.answer = function(req, res){
 exports.answer2 = function(req, res){
 	models.Quiz.find(req.params.id).then(function(quiz){
 		if(req.query.respuesta === req.quiz.respuesta) {
+			puntuacion = puntuacion + 1;
 			res.render('quizes/answerrandom', { quiz: req.quiz, respuesta: 'Correcto' ,errors:[]});
 		} else {
 			res.render('quizes/answerrandom', { quiz: req.quiz, respuesta: 'Incorrecto' ,errors:[]});
@@ -113,6 +116,11 @@ exports.destroy = function(req, res){
 
 exports.randomQuestion = function(req, res, next){
 	var ran, total;
+	index = index + 1;
+	if(index === 11){
+		index = 0;
+		res.render('quizes/fin',  {puntuacion: puntuacion ,errors:[] });
+	}
 	models.Quiz.findAll().then(function (preg){
 		total = preg.length;
 		ran = Math.floor(Math.random()*total);
