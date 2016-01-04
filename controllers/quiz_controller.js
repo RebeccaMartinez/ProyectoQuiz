@@ -49,7 +49,7 @@ exports.newq = function(req, res) {
 //POST /quizes/create
 
 exports.create = function(req, res) {
-	models.Quiz.find({where:{pregunta:'ASD'}})
+	models.Quiz.find({where:{pregunta:'WER'}})
 	.then(function(valor){
 		console.log("asdasdasdasdasdasd  :"+valor.UserId);
 	});
