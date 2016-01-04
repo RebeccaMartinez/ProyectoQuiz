@@ -10,19 +10,29 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div id="page-wrap">
-	<header class="main" id="h1">
-    <% if(!session.user) { %>
-      <span class="right"><a href="/login">Login</a></span>
-      <span class="right"><a href="/signin">Registrarse</a></span>
-    <%} else { %>
-    <span class="right"><%= session.user.username%><a href="/logout">Logout</a></span>
-    <%}%>
-
-		<h1>Quiz: el juego de las preguntas</h1>
-	</header>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Quiz: El juego de las preguntas</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/quizes">Ver todas las preguntas</a></li>
+          <% if(!session.user) { %>
+            <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <%} else { %>
+            <li><a href="/users"> Ver todos los usuarios</a></li>
+            <li><a href="/quizes/preguntas/new"> Crear pregunta</a></li>
+            <li><a href="/quizes/user/perfil"><span class="right"></span><%= session.user.username %></a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
 	<section class="main" id="s1">
-
     <% if(errors["pregunta"]) { %>
         <span class='ErrorMsgs'><%= errors["pregunta"] %></span>
     <% } %>
@@ -33,9 +43,10 @@
     <br><br>
 		<%- body %>
 	</section>
-	<footer class="main" id="f1">
-		<a href= "https://es.wikipedia.org/wiki/Quiz"> ¿Que es un quiz?</a>
-	</footer>
      </div>
+     <footer class="main" id="f1">
+       <a href= "https://github.com/RebeccaMartinez"> Rebecca Martínez Galán</a>
+       <a href= "https://github.com/quinoescobar" id="joaquin"> José Joaquin Escobar Gómez</a>
+      <footer>
   </body>
 </html>

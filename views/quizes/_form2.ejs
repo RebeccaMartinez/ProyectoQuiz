@@ -1,6 +1,10 @@
 <label for="preg" class="rem">Pregunta: </label>
-<input type"text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta%>"/><p>
+<input type"text" id="preg" class="form-control" name="quiz[pregunta]" value="<%= quiz.pregunta%>"/><p>
 <label for="resp" class="rem">Respuesta: </label>
-<input type"text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta%>"/><p>
-<a href="/quizes"><button type="button" name="button">Cancelar</button></a>
-<input type="submit" value="Guardar pregunta"/>
+<%if(quiz.tipo == "corta"){%>
+  <input type"text" id="resp" class="form-control" name="quiz[respuesta]" value="<%= quiz.respuesta%>"/><p>
+<%} else { %>
+  <textarea class="form-control" rows="5" name="quiz[respuesta]"><%= quiz.respuesta%></textarea>
+<%}%>
+<button type="submit" class="btn btn-primary" name="button">Guardar pregunta</button>
+<a href="/quizes"><button type="button" class="btn btn-primary" name="button">Cancelar</button></a>

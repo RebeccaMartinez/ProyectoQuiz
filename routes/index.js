@@ -26,12 +26,18 @@ router.post('/quizes/create', sessionController.loginRequired, quizController.cr
 router.get('/quizes/:id/edit', sessionController.loginRequired,quizController.edit);
 router.put('/quizes/:id', sessionController.loginRequired, quizController.update);
 router.delete('/quizes/:id', sessionController.loginRequired, quizController.destroy);
+router.get('/quizes/user/perfil', quizController.perfil);
+router.get('/quizes/preguntas/test', quizController.randomQuestion);
+router.get('/quizes/:id/answer2', quizController.answer2);
 
 //router.get('/quizes/questions/:id', quizController.specificQuestion);
 
 //router.get('/quizes/questions', quizController.questions);
 
 //Rutas de creacion de usuario
+router.get('/users', sessionController.loginRequired, userController.index);
+router.get('/users/:id2', sessionController.loginRequired, userController.show);
 router.get('/signin', userController.newq);
 router.post('/signin', userController.create);
+
 module.exports = router;

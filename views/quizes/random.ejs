@@ -1,0 +1,12 @@
+<div class="col-md-offset-3">
+	<form method="get" action="/quizes/<%= quiz.id %>/answer2">
+		<h4>Pregunta: <%= quiz.pregunta %></h4>
+		<%if(quiz.tipo == "corta"){%>
+			<input type="text" name="respuesta" class="form-control" placeholder="Respuesta" />
+		<%} else { %>
+		  <textarea class="form-control" rows="5" name="respuesta" placeholder="Respuesta"></textarea>
+		<%}%>
+		<br>
+		<button type="submit" class="btn btn-primary" name="button">Siguiente</button>
+	</form>
+</div>

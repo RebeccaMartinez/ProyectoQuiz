@@ -1,0 +1,23 @@
+<div class="col-md-4 col-md-offset-1">
+  <h2>Bienvenido a tu perfil</h2>
+  <h3> Preguntas publicadas por ti </h3>
+  <table>
+  <% var i; for(i = 0; i < quizes.length; i++) { %>
+  	<tr>
+      <%if(session.user){%>
+        <%if(session.user.id == quizes[i].UserId){%>
+  		    <td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+  				<td><a href="/quizes/<%= quizes[i].id %>/edit"><button type="button" class="btn btn-info btn-xs" name="button">Editar</button></a></td>
+  				<td>
+  				<form method="post" action="/quizes/<%= quizes[i].id %>?_method=delete">
+  					<button type="submit" class="btn btn-danger btn-xs" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+  						Borrar
+  					</button>
+  				</form>
+  				</td>
+  			<% } %>
+  	<% } %>
+  	</tr>
+  <% } %>
+  </table>
+</div>
