@@ -34,7 +34,7 @@ exports.create = function(req, res){
 		//La sesión se define por la existencia de: req.session.user
 		req.session.user = {id: user.id, username: user.username};
 		var uname =user.username;
-		res.render('sessions/loginSuccess', { nombre : uname ,errors:[]}); //redirección a path anterior a login
+		res.render('sessions/loginSuccess', { errors:[]}); //redirección a path anterior a login
 	});
 
 };
