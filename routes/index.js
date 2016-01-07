@@ -5,9 +5,8 @@ var quizController = require('../controllers/quiz_controller');
 var sessionController = require('../controllers/session_controller');
 var userController = require('../controllers/user_controller');
 /* GET home page.  */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' ,errors:[]});
-});
+router.get('/', quizController.inicio);
+
 
 //Autoload de comando con quizId
 router.param(':id',quizController.load);

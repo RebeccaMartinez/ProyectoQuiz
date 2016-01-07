@@ -1,8 +1,11 @@
 var models = require('../models/models.js');
 var index = 0;
 var puntuacion = 0;
-
-exports.load= function(req,res,next,quizId) {
+exports.inicio = function(req, res){
+	puntuacion = 0;
+	res.render('index', { title: 'Quiz' ,errors:[]});
+}
+exports.load = function(req,res,next,quizId) {
 	models.Quiz.find(quizId).then(
 		function(quiz){
 			if(quiz){
