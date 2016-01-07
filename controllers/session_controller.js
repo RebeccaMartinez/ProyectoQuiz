@@ -34,7 +34,7 @@ exports.create = function(req, res){
 		//La sesión se define por la existencia de: req.session.user
 		req.session.user = {id: user.id, username: user.username};
 		console.log("USER NAME   :" + req.session.user.username);
-		res.render('/quizes/user/perfil', { errors:[]}); //render del perfil del usuario al loguearse
+		res.redirect('/quizes/user/perfil'); //render del perfil del usuario al loguearse
 	});
 
 };
