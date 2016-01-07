@@ -55,9 +55,9 @@ exports.create = function(req, res){
 				user
 				.save({ fields: ["username", "password"]})
 				.then(function(){
-					res.redirect('/');
+					res.render('sessions/wellcome', {errors:[]});
 				});
-				console.log("Registrado exitosamente :" + user);
+				console.log("Registrado exitosamente :" + user.username + "  "+ user.password);
 				//redireccionamos a incio
 			}
 			else {
