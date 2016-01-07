@@ -4,7 +4,7 @@ var puntuacion = 0;
 exports.inicio = function(req, res){
 	puntuacion = 0;
 	res.render('index', { title: 'Quiz' ,errors:[]});
-}
+};
 exports.load = function(req,res,next,quizId) {
 	models.Quiz.find(quizId).then(
 		function(quiz){
