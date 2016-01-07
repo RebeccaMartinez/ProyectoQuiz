@@ -3,8 +3,11 @@
 <h3>Bienvenido a <%= title %>: El portal para responder preguntas.</h3><br><br>
 <p>Aquí podrá crear sus propias preguntas para que otros usuarios las respondan. Además también podrá responder
 a preguntas de diversos temas y así poner a prueba su conocimento.</p><br><br>
+<% if(!session.user) { %>
+<a href="/signin" id="btn1"><button type="button" class="btn btn-primary btn-lg" > Empezar a jugar </button></a>
+<%} else { %>
 <a href="/quizes/preguntas/test" id="btn1"><button type="button" class="btn btn-primary btn-lg" > Empezar a jugar </button></a>
-
+<%}%>
 </div>
 <div class="col-md-5 col-md-offset-1">
   <img src="images/quiz2.jpg" id="img_princi"/>
