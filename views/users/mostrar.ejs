@@ -3,7 +3,7 @@
 <table>
 <% var i; for(i = 0; i < quizes.length; i++) { %>
 	<tr>
-		<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+		<td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
 			<%if(session.user.id == quizes[i].UserId){%>
 				<td><a href="/quizes/<%= quizes[i].id %>/edit"><button type="button" class="btn btn-info btn-xs" name="button">Editar</button></a></td>
 				<td>
